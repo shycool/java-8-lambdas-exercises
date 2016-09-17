@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 
 public class Logger {
 
-    private boolean debug = true;
+    private boolean debug = false;
 
     public boolean isDebugEnabled() {
         return debug;
@@ -18,15 +18,20 @@ public class Logger {
 
     public void example() {
         // BEGIN debug_optimised
-Logger logger = new Logger();
-if (logger.isDebugEnabled()) {
-    logger.debug("Look at this: " + expensiveOperation());
-}
+        Logger logger = new Logger();
+        if (logger.isDebugEnabled()) {
+            logger.debug("Look at this: " + expensiveOperation());
+        }
         // END debug_optimised
     }
 
+    public static void main(String[] args) {
+        Logger logger = new Logger();
+        logger.example();
+    }
+
     private String expensiveOperation() {
-        return "";
+        return "aa";
     }
 
     // BEGIN debug_lambda
@@ -39,8 +44,8 @@ if (logger.isDebugEnabled()) {
 
     public void exampleWithLambda() {
         // BEGIN debug_optimised_lambda
-Logger logger = new Logger();
-logger.debug(() -> "Look at this: " + expensiveOperation());
+        Logger logger = new Logger();
+        logger.debug(() -> "Look at this: " + expensiveOperation());
         // END debug_optimised_lambda
     }
 
