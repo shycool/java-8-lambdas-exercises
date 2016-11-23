@@ -18,10 +18,17 @@ import static java.util.stream.Collectors.*;
 
 public class CollectorExamples {
 
+    public static void main(String[] args) {
+        CollectorExamples examples = new CollectorExamples();
+        examples.toCollectionTreeset();
+    }
+    
     public void toCollectionTreeset() {
         Stream<Integer> stream = Stream.of(1, 2, 3);
         // BEGIN TO_COLLECTION_TREESET
-        stream.collect(toCollection(TreeSet::new));
+        TreeSet<Integer> treeSet = stream.collect(toCollection(TreeSet::new));
+        System.out.println(treeSet);
+
         // END TO_COLLECTION_TREESET
     }
 
